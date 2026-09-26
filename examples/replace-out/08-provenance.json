@@ -1,0 +1,28 @@
+{
+  "chain": [
+    "source",
+    "semantic_ir",
+    "cisc",
+    "risc",
+    "genotype_design",
+    "sequence_ir",
+    "reference",
+    "derived_sequence",
+    "verification"
+  ],
+  "classes": {
+    "compiler": "MODEL",
+    "design": "DESIGN",
+    "reference": "REFERENCE_DATA",
+    "simulation": "SIMULATION"
+  },
+  "output_sequence_digest": "6a97eae150bddc75fee5ccb63082032d9645afea9f9fec2eda18fff43fd1380f",
+  "parent_digests": {
+    "01-source": "19e4b98db72d4e85ce50a47cccb07551441342323ea64b29518d22c61d861d11",
+    "02-semantic-ir": "5f88394af4d3f2ca67fd0bb830e0ae84f7f4b0a546e2ee6a14599259dbf7f0f7",
+    "03-cisc": "010137c02ce763090490ed00bbdda68967d6785b7e5904af5bcd330b8158ef60",
+    "04-risc": "f72d602e92b617051eb1f170e97b02e5902dc689892e883116d33f423f21cb05",
+    "05-genotype-design": "9b99b869a78fd8b42340b032573c9753e4b3808261b1a0036a9829524ac3f60d",
+    "06-sequence-ir": "d2d87c4f488c49fc897936f91020bb2f390db69ebf208040676b621927b933f2"
+  }
+}

@@ -1,0 +1,27 @@
+// PANINI source — declarative biological intent.
+// The compiler, not this file, chooses realization strategies.
+
+organism Mouse {
+    intent {
+        establish axial_pattern {
+            primary = tail
+            secondary = tail
+        }
+
+        reach_state mature
+    }
+
+    constraints {
+        viability
+        developmental_consistency
+        phenotype_fidelity
+    }
+
+    verify {
+        molecular
+        cellular
+        tissue
+        anatomical
+        temporal
+    }
+}

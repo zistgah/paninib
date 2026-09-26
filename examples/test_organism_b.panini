@@ -1,0 +1,16 @@
+// TEST / NON-BIOLOGICAL / CONFORMANCE MODEL
+// Not a biological claim. Exercises PANINI Core without Mus musculus.
+
+organism TestOrganismB {
+    intent {
+        reach_state on
+    }
+
+    constraints {
+        viability
+    }
+
+    verify {
+        molecular
+    }
+}

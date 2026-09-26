@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://panini.local/schemas/diagnostic.schema.json",
+  "title": "PaniniDiagnostic",
+  "description": "Typed compiler diagnostic for biological resolution. Schema version 0.7.0.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "code", "severity", "constraint_id", "message"],
+  "properties": {
+    "schema_version": { "type": "string", "const": "0.7.0" },
+    "code": { "type": "string", "enum": ["E0001","E0002","E0003","E0004","E0005","E0006","E0007","E0008","E0009","E0010","E0011"] },
+    "name": { "type": "string" },
+    "severity": { "type": "string", "enum": ["error", "warning", "info"] },
+    "constraint_id": { "type": "string", "minLength": 1 },
+    "source_location": { "type": "string" },
+    "message": { "type": "string", "minLength": 1 },
+    "current_evidence": { "type": "array", "items": { "type": "string" } },
+    "causal_basis": { "type": "string", "enum": ["STANDARD_PART","EVIDENCE_BACKED","USER_ASSERTED","MODEL_DERIVED","GENERATIVE_HYPOTHESIS","UNRESOLVED","ASSOCIATED","CORRELATED"] },
+    "validation_status": { "type": "string", "enum": ["NOT_EVALUATED","NOT_VALIDATED","COMPUTATIONALLY_SUPPORTED","EXPERIMENTALLY_SUPPORTED","EXPERIMENTALLY_VALIDATED"] },
+    "why_lowering_stopped": { "type": "string" },
+    "resolution_path": { "type": "string" },
+    "affected_artifacts": { "type": "array", "items": { "type": "string" } }
+  }
+}

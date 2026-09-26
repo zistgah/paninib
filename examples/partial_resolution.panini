@@ -1,0 +1,16 @@
+// One resolvable constraint (standard part) and one unresolved mechanism.
+
+organism synthetic {
+    intent {
+        use_part reporter_cassette
+        establish two_tails
+    }
+
+    constraints {
+        viability
+    }
+
+    verify {
+        molecular
+    }
+}

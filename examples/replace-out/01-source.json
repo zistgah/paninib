@@ -1,0 +1,4 @@
+{
+  "digest": "7b498c1c9fd00c0d2f2c6440b5a4724c198c218d880f7eeaaed87b19f784b95d",
+  "source": "# Explicit sequence transformation \u2014 proves the compiler path.\n# Not a phenotype claim.\norganism synthetic\nassembly demo-v1\nreference chrDemo\nreplace 4 8 TTTT\n"
+}

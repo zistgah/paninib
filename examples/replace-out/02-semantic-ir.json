@@ -1,0 +1,83 @@
+{
+  "assembly": "demo-v1",
+  "knowledge": {
+    "resolved": [
+      {
+        "attributes": {
+          "note": "TEST fixture organism",
+          "scientific": false
+        },
+        "canonical_id": "org:synthetic",
+        "created": "2026-09-25T11:56:06Z",
+        "evidence_status": "model_assumption",
+        "kind": "Organism",
+        "name": "synthetic",
+        "namespace": "panini",
+        "provenance": "MODEL",
+        "source": "panini.knowledge.mvp",
+        "source_id": "org:synthetic",
+        "updated": "2026-09-25T11:56:06Z",
+        "validity_domain": "non-biological-conformance",
+        "version": "0.6.0"
+      },
+      {
+        "attributes": {
+          "length": 12,
+          "sequences": [
+            "chrDemo"
+          ]
+        },
+        "canonical_id": "asm:demo-v1",
+        "created": "2026-09-25T11:56:06Z",
+        "evidence_status": "curated",
+        "kind": "Assembly",
+        "name": "demo-v1",
+        "namespace": "panini",
+        "provenance": "REFERENCE_DATA",
+        "source": "panini.knowledge.mvp",
+        "source_id": "asm:demo-v1",
+        "updated": "2026-09-25T11:56:06Z",
+        "validity_domain": "synthetic-demo",
+        "version": "0.6.0"
+      },
+      {
+        "attributes": {
+          "alphabet": "ACGT",
+          "assembly": "demo-v1",
+          "length": 12
+        },
+        "canonical_id": "seq:demo-v1:chrDemo",
+        "created": "2026-09-25T11:56:06Z",
+        "evidence_status": "curated",
+        "kind": "Sequence",
+        "name": "chrDemo",
+        "namespace": "panini",
+        "provenance": "REFERENCE_DATA",
+        "source": "panini.knowledge.mvp",
+        "source_id": "seq:demo-v1:chrDemo",
+        "updated": "2026-09-25T11:56:06Z",
+        "validity_domain": "synthetic-demo",
+        "version": "0.6.0"
+      }
+    ]
+  },
+  "operations": [
+    {
+      "edit_id": "edit-1",
+      "end": 8,
+      "operation": "REPLACE",
+      "orientation": "+",
+      "provenance": "DESIGN",
+      "reference_sequence": "",
+      "replacement": "TTTT",
+      "source": "",
+      "start": 4,
+      "validation": "pending"
+    }
+  ],
+  "organism": "synthetic",
+  "reference": "chrDemo",
+  "target": "explicit_sequence_transformation",
+  "type": "SemanticIR",
+  "version": "0.6.0"
+}

@@ -1,0 +1,6 @@
+# Explicit sequence transformation — proves the compiler path.
+# Not a phenotype claim.
+organism synthetic
+assembly demo-v1
+reference chrDemo
+replace 4 8 TTTT

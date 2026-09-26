@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://panini.local/schemas/sequence_ir.schema.json",
+  "title": "SequenceIR",
+  "type": "object",
+  "required": ["type", "version", "assembly", "reference", "edits"],
+  "properties": {
+    "type": {"const": "SequenceIR"},
+    "version": {"type": "string"},
+    "assembly": {"type": "string"},
+    "reference": {"type": "string"},
+    "coordinate_system": {"type": "string"},
+    "edits": {"type": "array"}
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "assembly": "demo-v1",
+  "constraints": [],
+  "coordinate_system": "0-based-half-open",
+  "edits": [
+    {
+      "edit_id": "edit-1",
+      "end": 8,
+      "operation": "REPLACE",
+      "orientation": "+",
+      "provenance": "DESIGN",
+      "reference_sequence": "",
+      "replacement": "TTTT",
+      "source": "",
+      "start": 4,
+      "validation": "ok"
+    }
+  ],
+  "organism": "synthetic",
+  "reference": "chrDemo",
+  "type": "SequenceIR",
+  "version": "0.6.0"
+}

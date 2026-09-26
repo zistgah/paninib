@@ -1,0 +1,15 @@
+// Association-only knowledge exists. Must not be treated as causation.
+
+organism synthetic {
+    intent {
+        establish glow_associated
+    }
+
+    constraints {
+        viability
+    }
+
+    verify {
+        molecular
+    }
+}

@@ -1,0 +1,6 @@
+# Explicit sequence transformation labelled as a user assertion.
+organism synthetic
+assembly demo-v1
+reference chrDemo
+causal_basis USER_ASSERTED
+replace 4 8 TTTT

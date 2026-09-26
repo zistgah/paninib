@@ -1,0 +1,2294 @@
+{
+  "compiler": "panini",
+  "version": "0.1.0",
+  "program_id": "prog_732653a9ea63",
+  "source_hash": "eb40b9594a2594608ba18aaac4f1860862da18dad041df7df5956645e9690578",
+  "invariant": "Intent \u2260 Genetic CISC \u2260 Microcode \u2260 ATGC \u2260 Physical execution",
+  "universal": {
+    "program_id": "prog_732653a9ea63",
+    "organism": "Mouse",
+    "organism_type": "Organism",
+    "intents": [
+      {
+        "verb": "establish",
+        "name": "axial_pattern",
+        "intent_type": "Pattern",
+        "operand_types": {
+          "primary": "Axis",
+          "secondary": "Axis"
+        },
+        "bindings": {
+          "primary": "tail",
+          "secondary": "tail"
+        }
+      },
+      {
+        "verb": "reach_state",
+        "name": "mature",
+        "intent_type": "State",
+        "operand_types": {},
+        "bindings": {}
+      }
+    ],
+    "constraints": [
+      {
+        "name": "viability",
+        "constraint_type": "Constraint"
+      },
+      {
+        "name": "developmental_consistency",
+        "constraint_type": "Constraint"
+      },
+      {
+        "name": "phenotype_fidelity",
+        "constraint_type": "Constraint"
+      }
+    ],
+    "verification_targets": [
+      "molecular",
+      "cellular",
+      "tissue",
+      "anatomical",
+      "temporal"
+    ],
+    "source_hash": "eb40b9594a2594608ba18aaac4f1860862da18dad041df7df5956645e9690578"
+  },
+  "causal": {
+    "program_id": "prog_732653a9ea63",
+    "nodes": [
+      {
+        "id": "intent",
+        "kind": "intent",
+        "label": "establish axial_pattern; reach_state mature"
+      },
+      {
+        "id": "wnt_fgf",
+        "kind": "signal",
+        "label": "posteriorizing Wnt/FGF field"
+      },
+      {
+        "id": "ra",
+        "kind": "signal",
+        "label": "anteriorizing RA field"
+      },
+      {
+        "id": "cdx",
+        "kind": "regulator",
+        "label": "Cdx posterior program"
+      },
+      {
+        "id": "hox",
+        "kind": "regulator",
+        "label": "posterior Hox code"
+      },
+      {
+        "id": "axis",
+        "kind": "phenotype",
+        "label": "axial / caudal identity"
+      }
+    ],
+    "edges": [
+      {
+        "frm": "wnt_fgf",
+        "to": "cdx",
+        "relation": "activates",
+        "evidence": "WIDELY_VALIDATED"
+      },
+      {
+        "frm": "ra",
+        "to": "cdx",
+        "relation": "represses",
+        "evidence": "WIDELY_VALIDATED"
+      },
+      {
+        "frm": "cdx",
+        "to": "hox",
+        "relation": "activates",
+        "evidence": "EXPERIMENTALLY_DEMONSTRATED"
+      },
+      {
+        "frm": "hox",
+        "to": "axis",
+        "relation": "specifies",
+        "evidence": "WIDELY_VALIDATED"
+      },
+      {
+        "frm": "intent",
+        "to": "axis",
+        "relation": "requires",
+        "evidence": "THEORETICAL"
+      }
+    ]
+  },
+  "cisc": {
+    "program_id": "prog_732653a9ea63",
+    "instructions": [
+      {
+        "id": "CISC#01",
+        "opcode": "SENSE",
+        "operands": [
+          "morphogen_field",
+          "tail"
+        ],
+        "operand_types": [
+          "Signal",
+          "Cell"
+        ],
+        "input_types": [
+          "Signal",
+          "Cell"
+        ],
+        "output_types": [
+          "State"
+        ],
+        "preconditions": [
+          "typed_operands"
+        ],
+        "postconditions": [
+          "state_consistent"
+        ],
+        "required_capabilities": [
+          "SENSE"
+        ],
+        "state_reads": [
+          "environment",
+          "localization"
+        ],
+        "state_writes": [
+          "cellular"
+        ],
+        "evidence_level": "WIDELY_VALIDATED",
+        "provenance": [
+          "cisc_def:SENSE"
+        ],
+        "reversibility": true,
+        "stochasticity": 0.15,
+        "state_effect": "Detect a signal or morphogen in context.",
+        "source_intent": "establish:axial_pattern"
+      },
+      {
+        "id": "CISC#02",
+        "opcode": "PROPAGATE",
+        "operands": [
+          "wnt_fgf",
+          "posterior"
+        ],
+        "operand_types": [
+          "Signal",
+          "Axis"
+        ],
+        "input_types": [
+          "Signal",
+          "Axis"
+        ],
+        "output_types": [
+          "Trajectory"
+        ],
+        "preconditions": [
+          "typed_operands"
+        ],
+        "postconditions": [
+          "state_consistent"
+        ],
+        "required_capabilities": [
+          "PROPAGATE"
+        ],
+        "state_reads": [
+          "environment"
+        ],
+        "state_writes": [
+          "environment",
+          "localization"
+        ],
+        "evidence_level": "EXPERIMENTALLY_DEMONSTRATED",
+        "provenance": [
+          "cisc_def:PROPAGATE"
+        ],
+        "reversibility": true,
+        "stochasticity": 0.3,
+        "state_effect": "Transmit a state or signal along an axis.",
+        "source_intent": "establish:axial_pattern"
+      },
+      {
+        "id": "CISC#03",
+        "opcode": "REGULATE",
+        "operands": [
+          "cdx_hox_network"
+        ],
+        "operand_types": [
+          "RegulatoryNetwork",
+          "Signal"
+        ],
+        "input_types": [
+          "RegulatoryNetwork",
+          "Signal"
+        ],
+        "output_types": [
+          "RegulatoryNetwork"
+        ],
+        "preconditions": [
+          "typed_operands"
+        ],
+        "postconditions": [
+          "state_consistent"
+        ],
+        "required_capabilities": [
+          "REGULATE"
+        ],
+        "state_reads": [
+          "rna",
+          "protein"
+        ],
+        "state_writes": [
+          "rna",
+          "protein"
+        ],
+        "evidence_level": "WIDELY_VALIDATED",
+        "provenance": [
+          "cisc_def:REGULATE"
+        ],
+        "reversibility": true,
+        "stochasticity": 0.25,
+        "state_effect": "Change activity of a regulatory network.",
+        "source_intent": "establish:axial_pattern"
+      },
+      {
+        "id": "CISC#04",
+        "opcode": "ACTIVATE",
+        "operands": [
+          "posterior_program"
+        ],
+        "operand_types": [
+          "Gene",
+          "Signal"
+        ],
+        "input_types": [
+          "Gene",
+          "Signal"
+        ],
+        "output_types": [
+          "State"
+        ],
+        "preconditions": [
+          "typed_operands"
+        ],
+        "postconditions": [
+          "state_consistent"
+        ],
+        "required_capabilities": [
+          "ACTIVATE"
+        ],
+        "state_reads": [
+          "genomic"
+        ],
+        "state_writes": [
+          "rna"
+        ],
+        "evidence_level": "WIDELY_VALIDATED",
+        "provenance": [
+          "cisc_def:ACTIVATE"
+        ],
+        "reversibility": true,
+        "stochasticity": 0.2,
+        "state_effect": "Increase activity of a target module.",
+        "source_intent": "establish:axial_pattern"
+      },
+      {
+        "id": "CISC#05",
+        "opcode": "REPRESS",
+        "operands": [
+          "anterior_program"
+        ],
+        "operand_types": [
+          "Gene",
+          "Signal"
+        ],
+        "input_types": [
+          "Gene",
+          "Signal"
+        ],
+        "output_types": [
+          "State"
+        ],
+        "preconditions": [
+          "typed_operands"
+        ],
+        "postconditions": [
+          "state_consistent"
+        ],
+        "required_capabilities": [
+          "REPRESS"
+        ],
+        "state_reads": [
+          "genomic"
+        ],
+        "state_writes": [
+          "rna"
+        ],
+        "evidence_level": "WIDELY_VALIDATED",
+        "provenance": [
+          "cisc_def:REPRESS"
+        ],
+        "reversibility": true,
+        "stochasticity": 0.2,
+        "state_effect": "Decrease activity of a target module.",
+        "source_intent": "establish:axial_pattern"
+      },
+      {
+        "id": "CISC#06",
+        "opcode": "LOCALIZE",
+        "operands": [
+          "caudal_determinants",
+          "tail"
+        ],
+        "operand_types": [
+          "Molecule",
+          "Geometry"
+        ],
+        "input_types": [
+          "Molecule",
+          "Geometry"
+        ],
+        "output_types": [
+          "State"
+        ],
+        "preconditions": [
+          "typed_operands"
+        ],
+        "postconditions": [
+          "state_consistent"
+        ],
+        "required_capabilities": [
+          "LOCALIZE"
+        ],
+        "state_reads": [
+          "localization"
+        ],
+        "state_writes": [
+          "localization"
+        ],
+        "evidence_level": "EXPERIMENTALLY_DEMONSTRATED",
+        "provenance": [
+          "cisc_def:LOCALIZE"
+        ],
+        "reversibility": true,
+        "stochasticity": 0.3,
+        "state_effect": "Place a molecule or state at a spatial address.",
+        "source_intent": "establish:axial_pattern"
+      },
+      {
+        "id": "CISC#07",
+        "opcode": "DIFFERENTIATE",
+        "operands": [
+          "axial_progenitors"
+        ],
+        "operand_types": [
+          "Cell",
+          "DevelopmentalProgram"
+        ],
+        "input_types": [
+          "Cell",
+          "DevelopmentalProgram"
+        ],
+        "output_types": [
+          "CellType"
+        ],
+        "preconditions": [
+          "typed_operands"
+        ],
+        "postconditions": [
+          "state_consistent"
+        ],
+        "required_capabilities": [
+          "DIFFERENTIATE"
+        ],
+        "state_reads": [
+          "cellular",
+          "rna"
+        ],
+        "state_writes": [
+          "cellular"
+        ],
+        "evidence_level": "WIDELY_VALIDATED",
+        "provenance": [
+          "cisc_def:DIFFERENTIATE"
+        ],
+        "reversibility": false,
+        "stochasticity": 0.35,
+        "state_effect": "Commit a cell toward a typed identity.",
+        "source_intent": "establish:axial_pattern"
+      },
+      {
+        "id": "CISC#08",
+        "opcode": "DEVELOP",
+        "operands": [
+          "caudal_extension"
+        ],
+        "operand_types": [
+          "DevelopmentalProgram",
+          "Organism"
+        ],
+        "input_types": [
+          "DevelopmentalProgram",
+          "Organism"
+        ],
+        "output_types": [
+          "Phenotype"
+        ],
+        "preconditions": [
+          "typed_operands"
+        ],
+        "postconditions": [
+          "state_consistent"
+        ],
+        "required_capabilities": [
+          "DEVELOP"
+        ],
+        "state_reads": [
+          "tissue",
+          "time"
+        ],
+        "state_writes": [
+          "tissue"
+        ],
+        "evidence_level": "WIDELY_VALIDATED",
+        "provenance": [
+          "cisc_def:DEVELOP"
+        ],
+        "reversibility": false,
+        "stochasticity": 0.4,
+        "state_effect": "Execute a multi-step developmental program.",
+        "source_intent": "establish:axial_pattern"
+      },
+      {
+        "id": "CISC#09",
+        "opcode": "FEEDBACK",
+        "operands": [
+          "hox_auto_maintenance"
+        ],
+        "operand_types": [
+          "State",
+          "RegulatoryNetwork"
+        ],
+        "input_types": [
+          "State",
+          "RegulatoryNetwork"
+        ],
+        "output_types": [
+          "RegulatoryNetwork"
+        ],
+        "preconditions": [
+          "typed_operands"
+        ],
+        "postconditions": [
+          "state_consistent"
+        ],
+        "required_capabilities": [
+          "FEEDBACK"
+        ],
+        "state_reads": [
+          "protein"
+        ],
+        "state_writes": [
+          "rna"
+        ],
+        "evidence_level": "EXPERIMENTALLY_DEMONSTRATED",
+        "provenance": [
+          "cisc_def:FEEDBACK"
+        ],
+        "reversibility": true,
+        "stochasticity": 0.25,
+        "state_effect": "Couple output state onto an upstream regulator.",
+        "source_intent": "establish:axial_pattern"
+      },
+      {
+        "id": "CISC#10",
+        "opcode": "DEVELOP",
+        "operands": [
+          "mature"
+        ],
+        "operand_types": [
+          "DevelopmentalProgram",
+          "Organism"
+        ],
+        "input_types": [
+          "DevelopmentalProgram",
+          "Organism"
+        ],
+        "output_types": [
+          "Phenotype"
+        ],
+        "preconditions": [
+          "typed_operands"
+        ],
+        "postconditions": [
+          "state_consistent"
+        ],
+        "required_capabilities": [
+          "DEVELOP"
+        ],
+        "state_reads": [
+          "tissue",
+          "time"
+        ],
+        "state_writes": [
+          "tissue"
+        ],
+        "evidence_level": "WIDELY_VALIDATED",
+        "provenance": [
+          "cisc_def:DEVELOP"
+        ],
+        "reversibility": false,
+        "stochasticity": 0.4,
+        "state_effect": "Execute a multi-step developmental program.",
+        "source_intent": "reach_state:mature"
+      },
+      {
+        "id": "CISC#11",
+        "opcode": "VERIFY",
+        "operands": [
+          "mature",
+          "state_target"
+        ],
+        "operand_types": [
+          "State",
+          "Constraint"
+        ],
+        "input_types": [
+          "State",
+          "Constraint"
+        ],
+        "output_types": [
+          "Observation"
+        ],
+        "preconditions": [
+          "typed_operands"
+        ],
+        "postconditions": [
+          "state_consistent"
+        ],
+        "required_capabilities": [
+          "VERIFY"
+        ],
+        "state_reads": [
+          "state"
+        ],
+        "state_writes": [],
+        "evidence_level": "COMPUTATIONALLY_SUPPORTED",
+        "provenance": [
+          "cisc_def:VERIFY"
+        ],
+        "reversibility": true,
+        "stochasticity": 0.1,
+        "state_effect": "Check predicted state against a constraint.",
+        "source_intent": "reach_state:mature"
+      },
+      {
+        "id": "CISC#12",
+        "opcode": "VERIFY",
+        "operands": [
+          "phenotype"
+        ],
+        "operand_types": [
+          "State",
+          "Constraint"
+        ],
+        "input_types": [
+          "State",
+          "Constraint"
+        ],
+        "output_types": [
+          "Observation"
+        ],
+        "preconditions": [
+          "typed_operands"
+        ],
+        "postconditions": [
+          "state_consistent"
+        ],
+        "required_capabilities": [
+          "VERIFY"
+        ],
+        "state_reads": [
+          "state"
+        ],
+        "state_writes": [],
+        "evidence_level": "COMPUTATIONALLY_SUPPORTED",
+        "provenance": [
+          "cisc_def:VERIFY"
+        ],
+        "reversibility": true,
+        "stochasticity": 0.1,
+        "state_effect": "Check predicted state against a constraint.",
+        "source_intent": "constraint:phenotype_fidelity"
+      }
+    ]
+  },
+  "risc": {
+    "program_id": "prog_732653a9ea63",
+    "instructions": [
+      {
+        "id": "RISC#01",
+        "opcode": "BIND",
+        "operands": [
+          "morphogen_field",
+          "tail"
+        ],
+        "operand_types": [
+          "Signal",
+          "Cell"
+        ],
+        "source_cisc": "CISC#01",
+        "source_intent": "establish:axial_pattern"
+      },
+      {
+        "id": "RISC#02",
+        "opcode": "READ_STATE",
+        "operands": [
+          "occupancy"
+        ],
+        "operand_types": [
+          "Signal",
+          "Cell"
+        ],
+        "source_cisc": "CISC#01",
+        "source_intent": "establish:axial_pattern"
+      },
+      {
+        "id": "RISC#03",
+        "opcode": "EMIT_SIGNAL",
+        "operands": [
+          "wnt_fgf",
+          "posterior"
+        ],
+        "operand_types": [
+          "Signal",
+          "Axis"
+        ],
+        "source_cisc": "CISC#02",
+        "source_intent": "establish:axial_pattern"
+      },
+      {
+        "id": "RISC#04",
+        "opcode": "TRANSPORT",
+        "operands": [
+          "wnt_fgf",
+          "posterior"
+        ],
+        "operand_types": [
+          "Signal",
+          "Axis"
+        ],
+        "source_cisc": "CISC#02",
+        "source_intent": "establish:axial_pattern"
+      },
+      {
+        "id": "RISC#05",
+        "opcode": "READ_STATE",
+        "operands": [
+          "regulatory_input"
+        ],
+        "operand_types": [
+          "RegulatoryNetwork",
+          "Signal"
+        ],
+        "source_cisc": "CISC#03",
+        "source_intent": "establish:axial_pattern"
+      },
+      {
+        "id": "RISC#06",
+        "opcode": "COMPARE",
+        "operands": [
+          "threshold"
+        ],
+        "operand_types": [
+          "RegulatoryNetwork",
+          "Signal"
+        ],
+        "source_cisc": "CISC#03",
+        "source_intent": "establish:axial_pattern"
+      },
+      {
+        "id": "RISC#07",
+        "opcode": "BIND",
+        "operands": [
+          "cdx_hox_network"
+        ],
+        "operand_types": [
+          "RegulatoryNetwork",
+          "Signal"
+        ],
+        "source_cisc": "CISC#03",
+        "source_intent": "establish:axial_pattern"
+      },
+      {
+        "id": "RISC#08",
+        "opcode": "WRITE_STATE",
+        "operands": [
+          "network_output"
+        ],
+        "operand_types": [
+          "RegulatoryNetwork",
+          "Signal"
+        ],
+        "source_cisc": "CISC#03",
+        "source_intent": "establish:axial_pattern"
+      },
+      {
+        "id": "RISC#09",
+        "opcode": "BIND",
+        "operands": [
+          "posterior_program"
+        ],
+        "operand_types": [
+          "Gene",
+          "Signal"
+        ],
+        "source_cisc": "CISC#04",
+        "source_intent": "establish:axial_pattern"
+      },
+      {
+        "id": "RISC#10",
+        "opcode": "TRANSCRIBE",
+        "operands": [
+          "posterior_program"
+        ],
+        "operand_types": [
+          "Gene",
+          "Signal"
+        ],
+        "source_cisc": "CISC#04",
+        "source_intent": "establish:axial_pattern"
+      },
+      {
+        "id": "RISC#11",
+        "opcode": "BIND",
+        "operands": [
+          "anterior_program"
+        ],
+        "operand_types": [
+          "Gene",
+          "Signal"
+        ],
+        "source_cisc": "CISC#05",
+        "source_intent": "establish:axial_pattern"
+      },
+      {
+        "id": "RISC#12",
+        "opcode": "WRITE_STATE",
+        "operands": [
+          "repressed"
+        ],
+        "operand_types": [
+          "Gene",
+          "Signal"
+        ],
+        "source_cisc": "CISC#05",
+        "source_intent": "establish:axial_pattern"
+      },
+      {
+        "id": "RISC#13",
+        "opcode": "TRANSPORT",
+        "operands": [
+          "caudal_determinants",
+          "tail"
+        ],
+        "operand_types": [
+          "Molecule",
+          "Geometry"
+        ],
+        "source_cisc": "CISC#06",
+        "source_intent": "establish:axial_pattern"
+      },
+      {
+        "id": "RISC#14",
+        "opcode": "READ_STATE",
+        "operands": [
+          "progenitor"
+        ],
+        "operand_types": [
+          "Cell",
+          "DevelopmentalProgram"
+        ],
+        "source_cisc": "CISC#07",
+        "source_intent": "establish:axial_pattern"
+      },
+      {
+        "id": "RISC#15",
+        "opcode": "WRITE_STATE",
+        "operands": [
+          "identity"
+        ],
+        "operand_types": [
+          "Cell",
+          "DevelopmentalProgram"
+        ],
+        "source_cisc": "CISC#07",
+        "source_intent": "establish:axial_pattern"
+      },
+      {
+        "id": "RISC#16",
+        "opcode": "COMMIT",
+        "operands": [],
+        "operand_types": [
+          "Cell",
+          "DevelopmentalProgram"
+        ],
+        "source_cisc": "CISC#07",
+        "source_intent": "establish:axial_pattern"
+      },
+      {
+        "id": "RISC#17",
+        "opcode": "EMIT_SIGNAL",
+        "operands": [
+          "program_clock"
+        ],
+        "operand_types": [
+          "DevelopmentalProgram",
+          "Organism"
+        ],
+        "source_cisc": "CISC#08",
+        "source_intent": "establish:axial_pattern"
+      },
+      {
+        "id": "RISC#18",
+        "opcode": "WRITE_STATE",
+        "operands": [
+          "progress"
+        ],
+        "operand_types": [
+          "DevelopmentalProgram",
+          "Organism"
+        ],
+        "source_cisc": "CISC#08",
+        "source_intent": "establish:axial_pattern"
+      },
+      {
+        "id": "RISC#19",
+        "opcode": "BRANCH",
+        "operands": [
+          "continue_until_mature"
+        ],
+        "operand_types": [
+          "DevelopmentalProgram",
+          "Organism"
+        ],
+        "source_cisc": "CISC#08",
+        "source_intent": "establish:axial_pattern"
+      },
+      {
+        "id": "RISC#20",
+        "opcode": "COMMIT",
+        "operands": [],
+        "operand_types": [
+          "DevelopmentalProgram",
+          "Organism"
+        ],
+        "source_cisc": "CISC#08",
+        "source_intent": "establish:axial_pattern"
+      },
+      {
+        "id": "RISC#21",
+        "opcode": "READ_STATE",
+        "operands": [
+          "output"
+        ],
+        "operand_types": [
+          "State",
+          "RegulatoryNetwork"
+        ],
+        "source_cisc": "CISC#09",
+        "source_intent": "establish:axial_pattern"
+      },
+      {
+        "id": "RISC#22",
+        "opcode": "BIND",
+        "operands": [
+          "upstream"
+        ],
+        "operand_types": [
+          "State",
+          "RegulatoryNetwork"
+        ],
+        "source_cisc": "CISC#09",
+        "source_intent": "establish:axial_pattern"
+      },
+      {
+        "id": "RISC#23",
+        "opcode": "WRITE_STATE",
+        "operands": [
+          "gain"
+        ],
+        "operand_types": [
+          "State",
+          "RegulatoryNetwork"
+        ],
+        "source_cisc": "CISC#09",
+        "source_intent": "establish:axial_pattern"
+      },
+      {
+        "id": "RISC#24",
+        "opcode": "EMIT_SIGNAL",
+        "operands": [
+          "program_clock"
+        ],
+        "operand_types": [
+          "DevelopmentalProgram",
+          "Organism"
+        ],
+        "source_cisc": "CISC#10",
+        "source_intent": "reach_state:mature"
+      },
+      {
+        "id": "RISC#25",
+        "opcode": "WRITE_STATE",
+        "operands": [
+          "progress"
+        ],
+        "operand_types": [
+          "DevelopmentalProgram",
+          "Organism"
+        ],
+        "source_cisc": "CISC#10",
+        "source_intent": "reach_state:mature"
+      },
+      {
+        "id": "RISC#26",
+        "opcode": "BRANCH",
+        "operands": [
+          "continue_until_mature"
+        ],
+        "operand_types": [
+          "DevelopmentalProgram",
+          "Organism"
+        ],
+        "source_cisc": "CISC#10",
+        "source_intent": "reach_state:mature"
+      },
+      {
+        "id": "RISC#27",
+        "opcode": "COMMIT",
+        "operands": [],
+        "operand_types": [
+          "DevelopmentalProgram",
+          "Organism"
+        ],
+        "source_cisc": "CISC#10",
+        "source_intent": "reach_state:mature"
+      },
+      {
+        "id": "RISC#28",
+        "opcode": "READ_STATE",
+        "operands": [
+          "mature",
+          "state_target"
+        ],
+        "operand_types": [
+          "State",
+          "Constraint"
+        ],
+        "source_cisc": "CISC#11",
+        "source_intent": "reach_state:mature"
+      },
+      {
+        "id": "RISC#29",
+        "opcode": "COMPARE",
+        "operands": [
+          "constraint"
+        ],
+        "operand_types": [
+          "State",
+          "Constraint"
+        ],
+        "source_cisc": "CISC#11",
+        "source_intent": "reach_state:mature"
+      },
+      {
+        "id": "RISC#30",
+        "opcode": "COMMIT",
+        "operands": [],
+        "operand_types": [
+          "State",
+          "Constraint"
+        ],
+        "source_cisc": "CISC#11",
+        "source_intent": "reach_state:mature"
+      },
+      {
+        "id": "RISC#31",
+        "opcode": "READ_STATE",
+        "operands": [
+          "phenotype"
+        ],
+        "operand_types": [
+          "State",
+          "Constraint"
+        ],
+        "source_cisc": "CISC#12",
+        "source_intent": "constraint:phenotype_fidelity"
+      },
+      {
+        "id": "RISC#32",
+        "opcode": "COMPARE",
+        "operands": [
+          "constraint"
+        ],
+        "operand_types": [
+          "State",
+          "Constraint"
+        ],
+        "source_cisc": "CISC#12",
+        "source_intent": "constraint:phenotype_fidelity"
+      },
+      {
+        "id": "RISC#33",
+        "opcode": "COMMIT",
+        "operands": [],
+        "operand_types": [
+          "State",
+          "Constraint"
+        ],
+        "source_cisc": "CISC#12",
+        "source_intent": "constraint:phenotype_fidelity"
+      }
+    ],
+    "lowering_map": [
+      {
+        "source_instruction": "CISC#01 (SENSE)",
+        "lowered_to": [
+          "RISC#01",
+          "RISC#02"
+        ],
+        "rule": "SENSE \u2192 BIND; READ occupancy",
+        "approximation": null
+      },
+      {
+        "source_instruction": "CISC#02 (PROPAGATE)",
+        "lowered_to": [
+          "RISC#03",
+          "RISC#04"
+        ],
+        "rule": "SIGNAL/PROPAGATE \u2192 EMIT; TRANSPORT",
+        "approximation": null
+      },
+      {
+        "source_instruction": "CISC#03 (REGULATE)",
+        "lowered_to": [
+          "RISC#05",
+          "RISC#06",
+          "RISC#07",
+          "RISC#08"
+        ],
+        "rule": "REGULATE \u2192 READ; COMPARE; BIND; WRITE",
+        "approximation": null
+      },
+      {
+        "source_instruction": "CISC#04 (ACTIVATE)",
+        "lowered_to": [
+          "RISC#09",
+          "RISC#10"
+        ],
+        "rule": "ACTIVATE \u2192 BIND; TRANSCRIBE",
+        "approximation": null
+      },
+      {
+        "source_instruction": "CISC#05 (REPRESS)",
+        "lowered_to": [
+          "RISC#11",
+          "RISC#12"
+        ],
+        "rule": "REPRESS \u2192 BIND; WRITE repressed",
+        "approximation": null
+      },
+      {
+        "source_instruction": "CISC#06 (LOCALIZE)",
+        "lowered_to": [
+          "RISC#13"
+        ],
+        "rule": "LOCALIZE \u2192 TRANSPORT",
+        "approximation": null
+      },
+      {
+        "source_instruction": "CISC#07 (DIFFERENTIATE)",
+        "lowered_to": [
+          "RISC#14",
+          "RISC#15",
+          "RISC#16"
+        ],
+        "rule": "DIFFERENTIATE \u2192 READ; WRITE identity; COMMIT",
+        "approximation": null
+      },
+      {
+        "source_instruction": "CISC#08 (DEVELOP)",
+        "lowered_to": [
+          "RISC#17",
+          "RISC#18",
+          "RISC#19",
+          "RISC#20"
+        ],
+        "rule": "DEVELOP \u2192 SIGNAL; WRITE; ITERATE; COMMIT",
+        "approximation": null
+      },
+      {
+        "source_instruction": "CISC#09 (FEEDBACK)",
+        "lowered_to": [
+          "RISC#21",
+          "RISC#22",
+          "RISC#23"
+        ],
+        "rule": "FEEDBACK \u2192 READ output; BIND upstream; WRITE gain",
+        "approximation": null
+      },
+      {
+        "source_instruction": "CISC#10 (DEVELOP)",
+        "lowered_to": [
+          "RISC#24",
+          "RISC#25",
+          "RISC#26",
+          "RISC#27"
+        ],
+        "rule": "DEVELOP \u2192 SIGNAL; WRITE; ITERATE; COMMIT",
+        "approximation": null
+      },
+      {
+        "source_instruction": "CISC#11 (VERIFY)",
+        "lowered_to": [
+          "RISC#28",
+          "RISC#29",
+          "RISC#30"
+        ],
+        "rule": "VERIFY \u2192 READ; COMPARE; COMMIT",
+        "approximation": null
+      },
+      {
+        "source_instruction": "CISC#12 (VERIFY)",
+        "lowered_to": [
+          "RISC#31",
+          "RISC#32",
+          "RISC#33"
+        ],
+        "rule": "VERIFY \u2192 READ; COMPARE; COMMIT",
+        "approximation": null
+      }
+    ]
+  },
+  "microcode": {
+    "program_id": "prog_732653a9ea63",
+    "backend": "mammalian_cell.developmental",
+    "organism_context": "Mouse",
+    "ops": [
+      {
+        "id": "MU-RISC#01",
+        "mechanism": "protein_nucleic_or_ligand_association",
+        "machinery": "mammalian_nucleus_and_cytoplasm",
+        "substrate": "mammalian_chromatin_rna_protein",
+        "source_risc": "RISC#01",
+        "state_transition": "complex_occupancy += k_on * free_ligand",
+        "notes": "lowered from CISC#01 / establish:axial_pattern"
+      },
+      {
+        "id": "MU-RISC#02",
+        "mechanism": "sensor_or_checkpoint_read",
+        "machinery": "mammalian_nucleus_and_cytoplasm",
+        "substrate": "mammalian_chromatin_rna_protein",
+        "source_risc": "RISC#02",
+        "state_transition": "observer <- S[addr]",
+        "notes": "lowered from CISC#01 / establish:axial_pattern"
+      },
+      {
+        "id": "MU-RISC#03",
+        "mechanism": "ligand_release_or_contact",
+        "machinery": "mammalian_nucleus_and_cytoplasm",
+        "substrate": "mammalian_chromatin_rna_protein",
+        "source_risc": "RISC#03",
+        "state_transition": "field += secretion",
+        "notes": "lowered from CISC#02 / establish:axial_pattern"
+      },
+      {
+        "id": "MU-RISC#04",
+        "mechanism": "directed_or_diffusive_transport",
+        "machinery": "mammalian_nucleus_and_cytoplasm",
+        "substrate": "mammalian_chromatin_rna_protein",
+        "source_risc": "RISC#04",
+        "state_transition": "loc(x) <- loc(x) + flux",
+        "notes": "lowered from CISC#02 / establish:axial_pattern"
+      },
+      {
+        "id": "MU-RISC#05",
+        "mechanism": "sensor_or_checkpoint_read",
+        "machinery": "mammalian_nucleus_and_cytoplasm",
+        "substrate": "mammalian_chromatin_rna_protein",
+        "source_risc": "RISC#05",
+        "state_transition": "observer <- S[addr]",
+        "notes": "lowered from CISC#03 / establish:axial_pattern"
+      },
+      {
+        "id": "MU-RISC#06",
+        "mechanism": "threshold_or_proofreading_gate",
+        "machinery": "mammalian_nucleus_and_cytoplasm",
+        "substrate": "mammalian_chromatin_rna_protein",
+        "source_risc": "RISC#06",
+        "state_transition": "flag <- (value ? setpoint)",
+        "notes": "lowered from CISC#03 / establish:axial_pattern"
+      },
+      {
+        "id": "MU-RISC#07",
+        "mechanism": "protein_nucleic_or_ligand_association",
+        "machinery": "mammalian_nucleus_and_cytoplasm",
+        "substrate": "mammalian_chromatin_rna_protein",
+        "source_risc": "RISC#07",
+        "state_transition": "complex_occupancy += k_on * free_ligand",
+        "notes": "lowered from CISC#03 / establish:axial_pattern"
+      },
+      {
+        "id": "MU-RISC#08",
+        "mechanism": "chromatin_or_protein_state_write",
+        "machinery": "mammalian_nucleus_and_cytoplasm",
+        "substrate": "mammalian_chromatin_rna_protein",
+        "source_risc": "RISC#08",
+        "state_transition": "S[addr] <- value",
+        "notes": "lowered from CISC#03 / establish:axial_pattern"
+      },
+      {
+        "id": "MU-RISC#09",
+        "mechanism": "protein_nucleic_or_ligand_association",
+        "machinery": "mammalian_nucleus_and_cytoplasm",
+        "substrate": "mammalian_chromatin_rna_protein",
+        "source_risc": "RISC#09",
+        "state_transition": "complex_occupancy += k_on * free_ligand",
+        "notes": "lowered from CISC#04 / establish:axial_pattern"
+      },
+      {
+        "id": "MU-RISC#10",
+        "mechanism": "rna_polymerase_elongation",
+        "machinery": "mammalian_nucleus_and_cytoplasm",
+        "substrate": "mammalian_chromatin_rna_protein",
+        "source_risc": "RISC#10",
+        "state_transition": "RNA += pol_rate * promoter_on",
+        "notes": "lowered from CISC#04 / establish:axial_pattern"
+      },
+      {
+        "id": "MU-RISC#11",
+        "mechanism": "protein_nucleic_or_ligand_association",
+        "machinery": "mammalian_nucleus_and_cytoplasm",
+        "substrate": "mammalian_chromatin_rna_protein",
+        "source_risc": "RISC#11",
+        "state_transition": "complex_occupancy += k_on * free_ligand",
+        "notes": "lowered from CISC#05 / establish:axial_pattern"
+      },
+      {
+        "id": "MU-RISC#12",
+        "mechanism": "chromatin_or_protein_state_write",
+        "machinery": "mammalian_nucleus_and_cytoplasm",
+        "substrate": "mammalian_chromatin_rna_protein",
+        "source_risc": "RISC#12",
+        "state_transition": "S[addr] <- value",
+        "notes": "lowered from CISC#05 / establish:axial_pattern"
+      },
+      {
+        "id": "MU-RISC#13",
+        "mechanism": "directed_or_diffusive_transport",
+        "machinery": "mammalian_nucleus_and_cytoplasm",
+        "substrate": "mammalian_chromatin_rna_protein",
+        "source_risc": "RISC#13",
+        "state_transition": "loc(x) <- loc(x) + flux",
+        "notes": "lowered from CISC#06 / establish:axial_pattern"
+      },
+      {
+        "id": "MU-RISC#14",
+        "mechanism": "sensor_or_checkpoint_read",
+        "machinery": "mammalian_nucleus_and_cytoplasm",
+        "substrate": "mammalian_chromatin_rna_protein",
+        "source_risc": "RISC#14",
+        "state_transition": "observer <- S[addr]",
+        "notes": "lowered from CISC#07 / establish:axial_pattern"
+      },
+      {
+        "id": "MU-RISC#15",
+        "mechanism": "chromatin_or_protein_state_write",
+        "machinery": "mammalian_nucleus_and_cytoplasm",
+        "substrate": "mammalian_chromatin_rna_protein",
+        "source_risc": "RISC#15",
+        "state_transition": "S[addr] <- value",
+        "notes": "lowered from CISC#07 / establish:axial_pattern"
+      },
+      {
+        "id": "MU-RISC#16",
+        "mechanism": "irreversible_lock_or_checkpoint",
+        "machinery": "mammalian_nucleus_and_cytoplasm",
+        "substrate": "mammalian_chromatin_rna_protein",
+        "source_risc": "RISC#16",
+        "state_transition": "committed <- true",
+        "notes": "lowered from CISC#07 / establish:axial_pattern"
+      },
+      {
+        "id": "MU-RISC#17",
+        "mechanism": "ligand_release_or_contact",
+        "machinery": "mammalian_nucleus_and_cytoplasm",
+        "substrate": "mammalian_chromatin_rna_protein",
+        "source_risc": "RISC#17",
+        "state_transition": "field += secretion",
+        "notes": "lowered from CISC#08 / establish:axial_pattern"
+      },
+      {
+        "id": "MU-RISC#18",
+        "mechanism": "chromatin_or_protein_state_write",
+        "machinery": "mammalian_nucleus_and_cytoplasm",
+        "substrate": "mammalian_chromatin_rna_protein",
+        "source_risc": "RISC#18",
+        "state_transition": "S[addr] <- value",
+        "notes": "lowered from CISC#08 / establish:axial_pattern"
+      },
+      {
+        "id": "MU-RISC#19",
+        "mechanism": "program_continuation_gate",
+        "machinery": "mammalian_nucleus_and_cytoplasm",
+        "substrate": "mammalian_chromatin_rna_protein",
+        "source_risc": "RISC#19",
+        "state_transition": "if flag then continue",
+        "notes": "lowered from CISC#08 / establish:axial_pattern"
+      },
+      {
+        "id": "MU-RISC#20",
+        "mechanism": "irreversible_lock_or_checkpoint",
+        "machinery": "mammalian_nucleus_and_cytoplasm",
+        "substrate": "mammalian_chromatin_rna_protein",
+        "source_risc": "RISC#20",
+        "state_transition": "committed <- true",
+        "notes": "lowered from CISC#08 / establish:axial_pattern"
+      },
+      {
+        "id": "MU-RISC#21",
+        "mechanism": "sensor_or_checkpoint_read",
+        "machinery": "mammalian_nucleus_and_cytoplasm",
+        "substrate": "mammalian_chromatin_rna_protein",
+        "source_risc": "RISC#21",
+        "state_transition": "observer <- S[addr]",
+        "notes": "lowered from CISC#09 / establish:axial_pattern"
+      },
+      {
+        "id": "MU-RISC#22",
+        "mechanism": "protein_nucleic_or_ligand_association",
+        "machinery": "mammalian_nucleus_and_cytoplasm",
+        "substrate": "mammalian_chromatin_rna_protein",
+        "source_risc": "RISC#22",
+        "state_transition": "complex_occupancy += k_on * free_ligand",
+        "notes": "lowered from CISC#09 / establish:axial_pattern"
+      },
+      {
+        "id": "MU-RISC#23",
+        "mechanism": "chromatin_or_protein_state_write",
+        "machinery": "mammalian_nucleus_and_cytoplasm",
+        "substrate": "mammalian_chromatin_rna_protein",
+        "source_risc": "RISC#23",
+        "state_transition": "S[addr] <- value",
+        "notes": "lowered from CISC#09 / establish:axial_pattern"
+      },
+      {
+        "id": "MU-RISC#24",
+        "mechanism": "ligand_release_or_contact",
+        "machinery": "mammalian_nucleus_and_cytoplasm",
+        "substrate": "mammalian_chromatin_rna_protein",
+        "source_risc": "RISC#24",
+        "state_transition": "field += secretion",
+        "notes": "lowered from CISC#10 / reach_state:mature"
+      },
+      {
+        "id": "MU-RISC#25",
+        "mechanism": "chromatin_or_protein_state_write",
+        "machinery": "mammalian_nucleus_and_cytoplasm",
+        "substrate": "mammalian_chromatin_rna_protein",
+        "source_risc": "RISC#25",
+        "state_transition": "S[addr] <- value",
+        "notes": "lowered from CISC#10 / reach_state:mature"
+      },
+      {
+        "id": "MU-RISC#26",
+        "mechanism": "program_continuation_gate",
+        "machinery": "mammalian_nucleus_and_cytoplasm",
+        "substrate": "mammalian_chromatin_rna_protein",
+        "source_risc": "RISC#26",
+        "state_transition": "if flag then continue",
+        "notes": "lowered from CISC#10 / reach_state:mature"
+      },
+      {
+        "id": "MU-RISC#27",
+        "mechanism": "irreversible_lock_or_checkpoint",
+        "machinery": "mammalian_nucleus_and_cytoplasm",
+        "substrate": "mammalian_chromatin_rna_protein",
+        "source_risc": "RISC#27",
+        "state_transition": "committed <- true",
+        "notes": "lowered from CISC#10 / reach_state:mature"
+      },
+      {
+        "id": "MU-RISC#28",
+        "mechanism": "sensor_or_checkpoint_read",
+        "machinery": "mammalian_nucleus_and_cytoplasm",
+        "substrate": "mammalian_chromatin_rna_protein",
+        "source_risc": "RISC#28",
+        "state_transition": "observer <- S[addr]",
+        "notes": "lowered from CISC#11 / reach_state:mature"
+      },
+      {
+        "id": "MU-RISC#29",
+        "mechanism": "threshold_or_proofreading_gate",
+        "machinery": "mammalian_nucleus_and_cytoplasm",
+        "substrate": "mammalian_chromatin_rna_protein",
+        "source_risc": "RISC#29",
+        "state_transition": "flag <- (value ? setpoint)",
+        "notes": "lowered from CISC#11 / reach_state:mature"
+      },
+      {
+        "id": "MU-RISC#30",
+        "mechanism": "irreversible_lock_or_checkpoint",
+        "machinery": "mammalian_nucleus_and_cytoplasm",
+        "substrate": "mammalian_chromatin_rna_protein",
+        "source_risc": "RISC#30",
+        "state_transition": "committed <- true",
+        "notes": "lowered from CISC#11 / reach_state:mature"
+      },
+      {
+        "id": "MU-RISC#31",
+        "mechanism": "sensor_or_checkpoint_read",
+        "machinery": "mammalian_nucleus_and_cytoplasm",
+        "substrate": "mammalian_chromatin_rna_protein",
+        "source_risc": "RISC#31",
+        "state_transition": "observer <- S[addr]",
+        "notes": "lowered from CISC#12 / constraint:phenotype_fidelity"
+      },
+      {
+        "id": "MU-RISC#32",
+        "mechanism": "threshold_or_proofreading_gate",
+        "machinery": "mammalian_nucleus_and_cytoplasm",
+        "substrate": "mammalian_chromatin_rna_protein",
+        "source_risc": "RISC#32",
+        "state_transition": "flag <- (value ? setpoint)",
+        "notes": "lowered from CISC#12 / constraint:phenotype_fidelity"
+      },
+      {
+        "id": "MU-RISC#33",
+        "mechanism": "irreversible_lock_or_checkpoint",
+        "machinery": "mammalian_nucleus_and_cytoplasm",
+        "substrate": "mammalian_chromatin_rna_protein",
+        "source_risc": "RISC#33",
+        "state_transition": "committed <- true",
+        "notes": "lowered from CISC#12 / constraint:phenotype_fidelity"
+      }
+    ]
+  },
+  "simulation_program": {
+    "program_id": "prog_732653a9ea63",
+    "entities": [
+      "axis_bin",
+      "Wnt",
+      "Fgf",
+      "RA",
+      "Cdx",
+      "HoxP"
+    ],
+    "state_variables": [
+      "wnt",
+      "fgf",
+      "ra",
+      "cdx",
+      "hox_posterior",
+      "tail_identity"
+    ],
+    "equations": [
+      "dWnt/dt = production_posterior - decay * Wnt",
+      "dFgf/dt = production_posterior - decay * Fgf",
+      "dRA/dt  = production_anterior - decay * RA",
+      "dCdx/dt = k_cdx * (Wnt+Fgf) * (1-RA) - decay * Cdx",
+      "dHoxP/dt = k_hox * Cdx - decay * HoxP",
+      "tail_identity = sigmoid(HoxP - 0.45)"
+    ],
+    "transition_rules": [
+      "if tail_identity > 0.6 at posterior third then axial_pattern.primary=tail",
+      "if time >= t_end then stage=mature"
+    ],
+    "spatial_model": "1d_axis_bins",
+    "temporal_model": "explicit_euler",
+    "stochastic_model": "deterministic_mean_field",
+    "parameters": {
+      "k_cdx": 0.22,
+      "k_hox": 0.2,
+      "dt": 0.1,
+      "t_end": 12.0,
+      "n_bins": 21.0
+    },
+    "observations": [
+      "posterior_tail_identity",
+      "hox_posterior_profile"
+    ],
+    "model_kind": "ReducedOrderModel",
+    "resolution": "tissue"
+  },
+  "simulation_result": {
+    "program_id": "prog_732653a9ea63",
+    "trajectory": [
+      {
+        "time": 0.0,
+        "axis_position": 1.0,
+        "wnt": 0.06,
+        "fgf": 0.05,
+        "ra": 0.0,
+        "cdx": 0.0024200000000000003,
+        "hox_posterior": 4.840000000000001e-05,
+        "tail_identity": 0.06299049407161028
+      },
+      {
+        "time": 5.999999999999995,
+        "axis_position": 1.0,
+        "wnt": 2.6058926266732687,
+        "fgf": 2.1715771888943913,
+        "ra": 0.0,
+        "cdx": 2.9800027943412513,
+        "hox_posterior": 1.2328326644632839,
+        "tail_identity": 0.9909598297099399
+      },
+      {
+        "time": 11.999999999999973,
+        "axis_position": 1.0,
+        "wnt": 3.8397266973648954,
+        "fgf": 3.1997722478040798,
+        "ra": 0.0,
+        "cdx": 7.78057615935243,
+        "hox_posterior": 6.125015389110821,
+        "tail_identity": 0.9999999999999984
+      }
+    ],
+    "terminal_phenotype_score": 0.9999999999999984,
+    "matured": true,
+    "notes": [
+      "reduced-order 1D axial model, n_bins=21",
+      "not a claim of quantitative embryology; qualitative polarity only",
+      "trajectory subsampled for package"
+    ]
+  },
+  "desired_phenotype": {
+    "program_id": "prog_732653a9ea63",
+    "molecular": [
+      {
+        "layer": "molecular",
+        "name": "posterior_hox_bias",
+        "value": "high",
+        "units": null,
+        "spatial_reference": "posterior",
+        "temporal_reference": "mature",
+        "uncertainty": 0.25,
+        "measurement_method": "expression_domain"
+      }
+    ],
+    "cellular": [],
+    "tissue": [],
+    "anatomical": [
+      {
+        "layer": "anatomical",
+        "name": "primary_axis_identity",
+        "value": "tail",
+        "units": null,
+        "spatial_reference": "anteroposterior_axis",
+        "temporal_reference": "mature",
+        "uncertainty": 0.2,
+        "measurement_method": "anatomical_landmark + Hox code"
+      }
+    ],
+    "physiological": [],
+    "behavioral": [],
+    "temporal": [
+      {
+        "layer": "temporal",
+        "name": "developmental_stage",
+        "value": "mature",
+        "units": null,
+        "spatial_reference": null,
+        "temporal_reference": "terminal",
+        "uncertainty": 0.15,
+        "measurement_method": "stage_series"
+      }
+    ],
+    "geometric": [
+      {
+        "layer": "geometric",
+        "name": "axis_polarity",
+        "value": "posterior_enriched",
+        "units": null,
+        "spatial_reference": "1d_axis",
+        "temporal_reference": "mature",
+        "uncertainty": 0.2,
+        "measurement_method": "spatial_profile"
+      }
+    ]
+  },
+  "predicted_phenotype": {
+    "program_id": "prog_732653a9ea63",
+    "molecular": [
+      {
+        "layer": "molecular",
+        "name": "posterior_hox_bias",
+        "value": "high",
+        "units": null,
+        "spatial_reference": "posterior",
+        "temporal_reference": "mature",
+        "uncertainty": 0.25,
+        "measurement_method": "expression_domain"
+      },
+      {
+        "layer": "molecular",
+        "name": "predicted_posterior_hox",
+        "value": "6.125",
+        "units": "au",
+        "spatial_reference": "posterior",
+        "temporal_reference": "t_end",
+        "uncertainty": 0.35,
+        "measurement_method": "digital_twin_reduced_order"
+      }
+    ],
+    "cellular": [],
+    "tissue": [],
+    "anatomical": [
+      {
+        "layer": "anatomical",
+        "name": "primary_axis_identity",
+        "value": "tail",
+        "units": null,
+        "spatial_reference": "anteroposterior_axis",
+        "temporal_reference": "mature",
+        "uncertainty": 0.2,
+        "measurement_method": "anatomical_landmark + Hox code"
+      },
+      {
+        "layer": "anatomical",
+        "name": "predicted_primary_axis_identity",
+        "value": "tail",
+        "units": null,
+        "spatial_reference": "posterior_third",
+        "temporal_reference": "t_end",
+        "uncertainty": 0.3,
+        "measurement_method": "digital_twin_reduced_order"
+      }
+    ],
+    "physiological": [],
+    "behavioral": [],
+    "temporal": [
+      {
+        "layer": "temporal",
+        "name": "developmental_stage",
+        "value": "mature",
+        "units": null,
+        "spatial_reference": null,
+        "temporal_reference": "terminal",
+        "uncertainty": 0.15,
+        "measurement_method": "stage_series"
+      }
+    ],
+    "geometric": [
+      {
+        "layer": "geometric",
+        "name": "axis_polarity",
+        "value": "posterior_enriched",
+        "units": null,
+        "spatial_reference": "1d_axis",
+        "temporal_reference": "mature",
+        "uncertainty": 0.2,
+        "measurement_method": "spatial_profile"
+      }
+    ]
+  },
+  "geometry": {
+    "kind": "PointCloud",
+    "topology": "1d_axis",
+    "points": [
+      {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "label": "anterior",
+        "state": "tail_identity~0.00",
+        "time": 11.999999999999973,
+        "confidence": 0.6
+      },
+      {
+        "x": 0.1,
+        "y": 0.0,
+        "z": 0.0,
+        "label": "anterior",
+        "state": "tail_identity~0.10",
+        "time": 11.999999999999973,
+        "confidence": 0.6
+      },
+      {
+        "x": 0.2,
+        "y": 0.0,
+        "z": 0.0,
+        "label": "anterior",
+        "state": "tail_identity~0.20",
+        "time": 11.999999999999973,
+        "confidence": 0.6
+      },
+      {
+        "x": 0.3,
+        "y": 0.0,
+        "z": 0.0,
+        "label": "anterior",
+        "state": "tail_identity~0.30",
+        "time": 11.999999999999973,
+        "confidence": 0.6
+      },
+      {
+        "x": 0.4,
+        "y": 0.0,
+        "z": 0.0,
+        "label": "trunk",
+        "state": "tail_identity~0.40",
+        "time": 11.999999999999973,
+        "confidence": 0.6
+      },
+      {
+        "x": 0.5,
+        "y": 0.0,
+        "z": 0.0,
+        "label": "trunk",
+        "state": "tail_identity~0.50",
+        "time": 11.999999999999973,
+        "confidence": 0.6
+      },
+      {
+        "x": 0.6,
+        "y": 0.0,
+        "z": 0.0,
+        "label": "trunk",
+        "state": "tail_identity~0.60",
+        "time": 11.999999999999973,
+        "confidence": 0.6
+      },
+      {
+        "x": 0.7,
+        "y": 0.0,
+        "z": 0.0,
+        "label": "posterior",
+        "state": "tail_identity~0.70",
+        "time": 11.999999999999973,
+        "confidence": 0.6
+      },
+      {
+        "x": 0.8,
+        "y": 0.0,
+        "z": 0.0,
+        "label": "posterior",
+        "state": "tail_identity~0.80",
+        "time": 11.999999999999973,
+        "confidence": 0.6
+      },
+      {
+        "x": 0.9,
+        "y": 0.0,
+        "z": 0.0,
+        "label": "posterior",
+        "state": "tail_identity~0.90",
+        "time": 11.999999999999973,
+        "confidence": 0.6
+      },
+      {
+        "x": 1.0,
+        "y": 0.0,
+        "z": 0.0,
+        "label": "posterior",
+        "state": "tail_identity~1.00",
+        "time": 11.999999999999973,
+        "confidence": 0.6
+      }
+    ],
+    "annotations": [
+      "schematic geometry downstream of state, not a rendered fake image"
+    ]
+  },
+  "realization": {
+    "program_id": "prog_732653a9ea63",
+    "backend": "mammalian_cell.developmental",
+    "construct_specification": [
+      {
+        "artifact_id": "mmu.Wnt3a",
+        "role": "posteriorizing_signal",
+        "organism": "Mus musculus",
+        "kind": "gene",
+        "sequence_ref": "stdlib://mmu.Wnt3a",
+        "topology": "linear_locus_reference",
+        "annotations": [
+          "posteriorizing morphogen / PSM maintenance",
+          "MGI:98991; posterior Wnt source"
+        ],
+        "evidence": "WIDELY_VALIDATED",
+        "sequence": "ATGCGTACGTTAGCTAGGCTAGCTAGCTAGCTAAACCGGTTAACCGGTTAAGCTAGCTAG"
+      },
+      {
+        "artifact_id": "mmu.Fgf8",
+        "role": "posteriorizing_signal",
+        "organism": "Mus musculus",
+        "kind": "gene",
+        "sequence_ref": "stdlib://mmu.Fgf8",
+        "topology": "linear_locus_reference",
+        "annotations": [
+          "caudal FGF signal; wavefront",
+          "MGI:99604; caudal FGF"
+        ],
+        "evidence": "WIDELY_VALIDATED",
+        "sequence": "ATGCCGGAATTCCGGTTAACCTTGGCCAATTGGAACCTTGGCCAATTCGGAATTCGGATAA"
+      },
+      {
+        "artifact_id": "mmu.Cdx2",
+        "role": "posterior_identity_program",
+        "organism": "Mus musculus",
+        "kind": "gene",
+        "sequence_ref": "stdlib://mmu.Cdx2",
+        "topology": "linear_locus_reference",
+        "annotations": [
+          "posterior identity transcription factor",
+          "MGI:88361; Cdx posterior program"
+        ],
+        "evidence": "WIDELY_VALIDATED",
+        "sequence": "ATGGCTAGCTAGCTAGCTAGCTAGCTAGCTAGCTAGCTAGCTAGCTAGCTAGCTAGCTAG"
+      },
+      {
+        "artifact_id": "mmu.Hoxd13",
+        "role": "posterior_identity_program",
+        "organism": "Mus musculus",
+        "kind": "gene",
+        "sequence_ref": "stdlib://mmu.Hoxd13",
+        "topology": "linear_locus_reference",
+        "annotations": [
+          "posterior Hox code",
+          "MGI:96205; posterior Hox"
+        ],
+        "evidence": "WIDELY_VALIDATED",
+        "sequence": "ATGAAACCCGGGTTTAAACCCGGGTTTAAACCCGGGTTTAAACCCGGGTTTAAACCCGGGTA"
+      },
+      {
+        "artifact_id": "mmu.Raldh2",
+        "role": "anteriorizing_countergradient",
+        "organism": "Mus musculus",
+        "kind": "gene",
+        "sequence_ref": "stdlib://mmu.Raldh2",
+        "topology": "linear_locus_reference",
+        "annotations": [
+          "RA synthesis; anteriorizing counter-gradient",
+          "MGI:107928; RA source"
+        ],
+        "evidence": "WIDELY_VALIDATED",
+        "sequence": "ATGTTTAAACCCGGGAAATTTCCCGGGAAATTTCCCGGGAAATTTCCCGGGAAATTTCCCTA"
+      }
+    ],
+    "required_capabilities": [
+      "ACTIVATE",
+      "DEVELOP",
+      "DIFFERENTIATE",
+      "FEEDBACK",
+      "LOCALIZE",
+      "PROPAGATE",
+      "REGULATE",
+      "REPRESS",
+      "SENSE",
+      "VERIFY"
+    ],
+    "qc_requirements": [
+      "identity_of_library_modules_by_checksum",
+      "no_unreferenced_sequence_invention",
+      "off_target_screen_before_any_lab_execution"
+    ],
+    "verification_plan": [
+      "molecular: posterior Hox / Cdx expression domain",
+      "cellular: axial progenitor identity",
+      "tissue: caudal extension vs anteriorization",
+      "anatomical: primary axis = tail",
+      "temporal: reach mature stage"
+    ],
+    "provenance": [
+      "cisc_instructions=12",
+      "micro_ops=33",
+      "stdlib=mouse_axial_library@0.1.0"
+    ],
+    "safety_constraints": [
+      "compiler does not authorize laboratory execution",
+      "realization package is a specification, not a protocol to run"
+    ],
+    "note": "ATGC strings in this package are reference placeholders bound to named library artifacts. They are not a compiled genome and must not be treated as executable biology."
+  },
+  "verification": {
+    "program_id": "prog_732653a9ea63",
+    "passed": [
+      {
+        "level": "L0",
+        "name": "syntax",
+        "passed": true,
+        "detail": "source parsed into a well-formed program"
+      },
+      {
+        "level": "L1",
+        "name": "type",
+        "passed": true,
+        "detail": "organism typed; intents present"
+      },
+      {
+        "level": "L2",
+        "name": "semantic",
+        "passed": true,
+        "detail": "intent verbs recognized"
+      },
+      {
+        "level": "L3",
+        "name": "capability",
+        "passed": true,
+        "detail": "backend mammalian_cell.developmental covers required CISC"
+      },
+      {
+        "level": "L4",
+        "name": "constraint",
+        "passed": true,
+        "detail": "declared constraints are in the supported set"
+      },
+      {
+        "level": "L5",
+        "name": "static_biological",
+        "passed": true,
+        "detail": "every selected CISC op has at least computationally supported evidence"
+      },
+      {
+        "level": "L6",
+        "name": "simulation",
+        "passed": true,
+        "detail": "digital twin terminal tail_identity=1.000"
+      },
+      {
+        "level": "L7",
+        "name": "molecular",
+        "passed": true,
+        "detail": "microcode present; molecular wet verification not executed"
+      },
+      {
+        "level": "L8",
+        "name": "cellular",
+        "passed": true,
+        "detail": "cellular layer represented in state model; not empirically assayed"
+      },
+      {
+        "level": "L9",
+        "name": "tissue",
+        "passed": true,
+        "detail": "tissue-scale polarity present in reduced-order twin"
+      },
+      {
+        "level": "L10",
+        "name": "phenotype",
+        "passed": true,
+        "detail": "predicted phenotype polarity matches declared primary axis"
+      },
+      {
+        "level": "L11",
+        "name": "longitudinal",
+        "passed": true,
+        "detail": "trajectory has multiple time points"
+      }
+    ],
+    "failed": [],
+    "warnings": [
+      "L7 molecular wet-lab verification is specified but not executed; compiler stops at realization package",
+      "backend uncertainty declared at 0.25"
+    ],
+    "assumptions": [
+      "murine axial Wnt/FGF/RA/Cdx/Hox literature transferred as causal prior",
+      "simulation is reduced-order and qualitative",
+      "library sequences are references, not compiled genomes"
+    ],
+    "uncertainties": [
+      "quantitative timing of axis elongation is not identified",
+      "cell-type resolution is aggregated"
+    ],
+    "evidence": [
+      [
+        "SENSE",
+        "WIDELY_VALIDATED"
+      ],
+      [
+        "PROPAGATE",
+        "EXPERIMENTALLY_DEMONSTRATED"
+      ],
+      [
+        "REGULATE",
+        "WIDELY_VALIDATED"
+      ],
+      [
+        "ACTIVATE",
+        "WIDELY_VALIDATED"
+      ],
+      [
+        "REPRESS",
+        "WIDELY_VALIDATED"
+      ],
+      [
+        "LOCALIZE",
+        "EXPERIMENTALLY_DEMONSTRATED"
+      ],
+      [
+        "DIFFERENTIATE",
+        "WIDELY_VALIDATED"
+      ],
+      [
+        "DEVELOP",
+        "WIDELY_VALIDATED"
+      ],
+      [
+        "FEEDBACK",
+        "EXPERIMENTALLY_DEMONSTRATED"
+      ],
+      [
+        "DEVELOP",
+        "WIDELY_VALIDATED"
+      ],
+      [
+        "VERIFY",
+        "COMPUTATIONALLY_SUPPORTED"
+      ],
+      [
+        "VERIFY",
+        "COMPUTATIONALLY_SUPPORTED"
+      ]
+    ],
+    "provenance": [
+      "cisc=12",
+      "risc=33",
+      "mu=33"
+    ],
+    "overall_pass": true
+  },
+  "provenance": {
+    "nodes": [
+      {
+        "id": "src",
+        "kind": "source",
+        "label": "organism Mouse with 2 intent(s), 3 constraint(s)"
+      },
+      {
+        "id": "sem",
+        "kind": "semantic",
+        "label": "typed universal bio-IR"
+      },
+      {
+        "id": "causal",
+        "kind": "causal",
+        "label": "axial Wnt/FGF/RA/Cdx/Hox prior"
+      },
+      {
+        "id": "cisc",
+        "kind": "cisc",
+        "label": "12 instructions"
+      },
+      {
+        "id": "risc",
+        "kind": "risc",
+        "label": "33 instructions"
+      },
+      {
+        "id": "mu",
+        "kind": "microcode",
+        "label": "33 ops on mammalian_cell.developmental"
+      },
+      {
+        "id": "lib",
+        "kind": "library",
+        "label": "mouse axial patterning modules"
+      },
+      {
+        "id": "sim",
+        "kind": "simulation",
+        "label": "reduced-order 1D twin"
+      },
+      {
+        "id": "pheno",
+        "kind": "phenotype",
+        "label": "desired + predicted"
+      },
+      {
+        "id": "real",
+        "kind": "realization",
+        "label": "construct specification package"
+      },
+      {
+        "id": "ver",
+        "kind": "verification",
+        "label": "L0\u2013L11 report"
+      }
+    ],
+    "edges": [
+      {
+        "frm": "src",
+        "to": "sem",
+        "relation": "interprets"
+      },
+      {
+        "frm": "sem",
+        "to": "causal",
+        "relation": "explains"
+      },
+      {
+        "frm": "sem",
+        "to": "cisc",
+        "relation": "lowers"
+      },
+      {
+        "frm": "cisc",
+        "to": "risc",
+        "relation": "lowers"
+      },
+      {
+        "frm": "risc",
+        "to": "mu",
+        "relation": "implements"
+      },
+      {
+        "frm": "lib",
+        "to": "real",
+        "relation": "supplies"
+      },
+      {
+        "frm": "cisc",
+        "to": "real",
+        "relation": "requires"
+      },
+      {
+        "frm": "sem",
+        "to": "sim",
+        "relation": "couples"
+      },
+      {
+        "frm": "sim",
+        "to": "pheno",
+        "relation": "predicts"
+      },
+      {
+        "frm": "real",
+        "to": "ver",
+        "relation": "checked-by"
+      },
+      {
+        "frm": "pheno",
+        "to": "ver",
+        "relation": "checked-by"
+      },
+      {
+        "frm": "causal",
+        "to": "cisc",
+        "relation": "supports"
+      }
+    ]
+  },
+  "pass_records": [
+    {
+      "pass_name": "parse+semantic",
+      "input_hash": "b5e985ff8bfd82ceff28e1b33e4fdebd60d8d7605645cedb2e9a5a0a487bd7da",
+      "output_hash": "21b52f6cdf44b4a143b9b216297f4c03cd774573d673f4b5b3cd65a6f1127c84",
+      "compiler_version": "0.1.0",
+      "transformations": [
+        "parse+semantic"
+      ],
+      "assumptions": [],
+      "approximation": null
+    },
+    {
+      "pass_name": "cisc-lowering",
+      "input_hash": "21b52f6cdf44b4a143b9b216297f4c03cd774573d673f4b5b3cd65a6f1127c84",
+      "output_hash": "0b0fccaf1c51414ce8d3f89b421e74f50d382c2951eed16cecdc95555dca6532",
+      "compiler_version": "0.1.0",
+      "transformations": [
+        "cisc-lowering"
+      ],
+      "assumptions": [],
+      "approximation": null
+    },
+    {
+      "pass_name": "risc-lowering",
+      "input_hash": "0b0fccaf1c51414ce8d3f89b421e74f50d382c2951eed16cecdc95555dca6532",
+      "output_hash": "1c7de76f2f64c0bc97c10509da23d046938bdec3d0fd75bc9f98c44bfced39ca",
+      "compiler_version": "0.1.0",
+      "transformations": [
+        "risc-lowering"
+      ],
+      "assumptions": [],
+      "approximation": null
+    },
+    {
+      "pass_name": "microcode-lowering",
+      "input_hash": "1c7de76f2f64c0bc97c10509da23d046938bdec3d0fd75bc9f98c44bfced39ca",
+      "output_hash": "0b23d8691e13b37051512bd03a21660b84617a678b7950dfc8ea950f669b08a5",
+      "compiler_version": "0.1.0",
+      "transformations": [
+        "microcode-lowering"
+      ],
+      "assumptions": [],
+      "approximation": null
+    },
+    {
+      "pass_name": "simulation",
+      "input_hash": "4bede73c185c3595ce2d2fc7706db250b5ad6e44ea4f493e8e14db4364f0aceb",
+      "output_hash": "06381eaed6dc5896a93c885dbea8307b3a624160083f883b53fd4d009f338f31",
+      "compiler_version": "0.1.0",
+      "transformations": [
+        "simulation"
+      ],
+      "assumptions": [],
+      "approximation": null
+    },
+    {
+      "pass_name": "realization",
+      "input_hash": "0b0fccaf1c51414ce8d3f89b421e74f50d382c2951eed16cecdc95555dca6532",
+      "output_hash": "7899679274f6856d41891bc34dafc77d8f244e6af1d9bbe47f624133c37d96b4",
+      "compiler_version": "0.1.0",
+      "transformations": [
+        "realization"
+      ],
+      "assumptions": [],
+      "approximation": null
+    }
+  ],
+  "capability": {
+    "backend": "mammalian_cell.developmental",
+    "required": [
+      "ACTIVATE",
+      "DEVELOP",
+      "DIFFERENTIATE",
+      "FEEDBACK",
+      "LOCALIZE",
+      "PROPAGATE",
+      "REGULATE",
+      "REPRESS",
+      "SENSE",
+      "VERIFY"
+    ],
+    "available": [
+      "RECOGNIZE",
+      "SENSE",
+      "SIGNAL",
+      "REGULATE",
+      "ACTIVATE",
+      "REPRESS",
+      "LOCALIZE",
+      "TRAFFIC",
+      "TRANSCRIBE",
+      "TRANSLATE",
+      "MODIFY",
+      "FOLD",
+      "DIFFERENTIATE",
+      "DEVELOP",
+      "FEEDBACK",
+      "VERIFY",
+      "COPY",
+      "POLYMERIZE",
+      "ASSOCIATE",
+      "DISSOCIATE",
+      "SWITCH",
+      "PROPAGATE",
+      "INHERIT"
+    ],
+    "missing": [],
+    "sufficient": true
+  }
+}

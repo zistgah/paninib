@@ -1,0 +1,10 @@
+{
+  "compiler": "1.0.0",
+  "date": "2026-09-26",
+  "command": "python3 -m unittest discover -s python/tests -p 'test_*.py'",
+  "passed": 164,
+  "failed": 0,
+  "skipped": 0,
+  "unavailable": ["GPUBackend.kernel"],
+  "scientifically_unresolved": ["two_tail_genomic_realization"]
+}

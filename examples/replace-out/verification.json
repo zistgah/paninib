@@ -1,0 +1,66 @@
+{
+  "checks": [
+    {
+      "detail": "examples/replace-out/01-source.json",
+      "name": "artifact:01-source.json",
+      "passed": true
+    },
+    {
+      "detail": "examples/replace-out/02-semantic-ir.json",
+      "name": "artifact:02-semantic-ir.json",
+      "passed": true
+    },
+    {
+      "detail": "examples/replace-out/03-cisc.json",
+      "name": "artifact:03-cisc.json",
+      "passed": true
+    },
+    {
+      "detail": "examples/replace-out/04-risc.json",
+      "name": "artifact:04-risc.json",
+      "passed": true
+    },
+    {
+      "detail": "examples/replace-out/05-genotype-design.json",
+      "name": "artifact:05-genotype-design.json",
+      "passed": true
+    },
+    {
+      "detail": "examples/replace-out/08-provenance.json",
+      "name": "artifact:08-provenance.json",
+      "passed": true
+    },
+    {
+      "detail": "examples/replace-out/manifest.json",
+      "name": "artifact:manifest.json",
+      "passed": true
+    },
+    {
+      "detail": "6a97eae150bddc75fee5ccb63082032d9645afea9f9fec2eda18fff43fd1380f",
+      "name": "output_digest",
+      "passed": true
+    },
+    {
+      "detail": "len=12",
+      "name": "fasta_alphabet",
+      "passed": true
+    },
+    {
+      "detail": "6a97eae150bddc75fee5ccb63082032d9645afea9f9fec2eda18fff43fd1380f",
+      "name": "reproducible_digest_field",
+      "passed": true
+    },
+    {
+      "detail": "b1bb15af215d1fdff848b7c7a3aaf151fd0444f5bae123cdc92f70c08d96f7d2",
+      "name": "reference_digest_present",
+      "passed": true
+    },
+    {
+      "detail": "7b498c1c9fd00c0d2f2c6440b5a4724c198c218d880f7eeaaed87b19f784b95d",
+      "name": "input_digest_present",
+      "passed": true
+    }
+  ],
+  "overall_pass": true,
+  "status": "COMPILED"
+}

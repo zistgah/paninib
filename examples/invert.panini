@@ -1,0 +1,5 @@
+# Unsupported sequence operation — must not invent a lowering.
+organism synthetic
+assembly demo-v1
+reference chrDemo
+invert 4 8

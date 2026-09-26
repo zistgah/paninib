@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+title: PANINI Genetic Compiler
+message: If you use this software, please cite it as below.
+type: software
+authors:
+  - family-names: Choudhary
+    given-names: Abhishek
+    orcid: "https://orcid.org/0009-0002-0684-8320"
+    affiliation: AyeAI
+license: proprietary
+copyright: Copyright (C) 1993-2026 Abhishek Choudhary. All rights reserved.
+version: 1.0.0
+date-released: "2026-09-26"
+abstract: >
+  A compiler platform that lowers declarative biological intent through
+  typed Genetic IR, CISC, RISC and Sequence IR, executes reduced-order
+  digital twins, and keeps desired, predicted, observed and validated
+  artifacts distinct. v1.0 is the publishable research-platform freeze.
+keywords:
+  - compiler
+  - intermediate representation
+  - developmental biology
+  - digital twin
+  - phenotype constraints
+  - sequence IR

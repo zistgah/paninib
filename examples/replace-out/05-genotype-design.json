@@ -1,0 +1,29 @@
+{
+  "assembly": "demo-v1",
+  "constraints": [],
+  "design_id": "gd_827864a0c976",
+  "edits": [
+    {
+      "edit_id": "edit-1",
+      "end": 8,
+      "operation": "REPLACE",
+      "orientation": "+",
+      "provenance": "DESIGN",
+      "reference_sequence": "",
+      "replacement": "TTTT",
+      "source": "",
+      "start": 4,
+      "validation": "ok"
+    }
+  ],
+  "evidence": [
+    "explicit_sequence_transformation"
+  ],
+  "genomic_realization": "resolved",
+  "organism": "synthetic",
+  "phenotype_target": "explicit_sequence_transformation",
+  "provenance": "DESIGN",
+  "reason": "explicit validated sequence edit; no causal phenotype claim",
+  "reference": "chrDemo",
+  "status": "COMPILED"
+}

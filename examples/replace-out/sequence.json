@@ -1,0 +1,23 @@
+{
+  "alphabet": "ACGT",
+  "assembly": "demo-v1",
+  "digest": "6a97eae150bddc75fee5ccb63082032d9645afea9f9fec2eda18fff43fd1380f",
+  "edits": [
+    {
+      "edit_id": "edit-1",
+      "end": 8,
+      "operation": "REPLACE",
+      "orientation": "+",
+      "provenance": "DESIGN",
+      "reference_sequence": "",
+      "replacement": "TTTT",
+      "source": "",
+      "start": 4,
+      "validation": "ok"
+    }
+  ],
+  "parent_digest": "b1bb15af215d1fdff848b7c7a3aaf151fd0444f5bae123cdc92f70c08d96f7d2",
+  "provenance": "DESIGN",
+  "sequence": "AACCTTTTAACC",
+  "sequence_id": "chrDemo"
+}

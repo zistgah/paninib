@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://panini.local/schemas/cisc_instruction.schema.json",
+  "title": "GeneticCISCInstruction",
+  "type": "object",
+  "required": [
+    "opcode",
+    "operands",
+    "input_types",
+    "output_types",
+    "preconditions",
+    "postconditions",
+    "required_capabilities",
+    "state_reads",
+    "state_writes",
+    "evidence",
+    "provenance"
+  ],
+  "properties": {
+    "opcode": { "type": "string" },
+    "operands": { "type": "array", "items": { "type": "string" } },
+    "input_types": { "type": "array", "items": { "type": "string" } },
+    "output_types": { "type": "array", "items": { "type": "string" } },
+    "preconditions": { "type": "array", "items": { "type": "string" } },
+    "postconditions": { "type": "array", "items": { "type": "string" } },
+    "required_capabilities": { "type": "array", "items": { "type": "string" } },
+    "state_reads": { "type": "array", "items": { "type": "string" } },
+    "state_writes": { "type": "array", "items": { "type": "string" } },
+    "evidence": { "type": "array" },
+    "provenance": { "type": "array", "items": { "type": "string" } }
+  }
+}

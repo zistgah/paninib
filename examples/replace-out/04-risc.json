@@ -1,0 +1,41 @@
+{
+  "lowering": [
+    {
+      "cisc_opcode": "REPLACE",
+      "lowering_status": "AVAILABLE",
+      "risc_sequence": [
+        "CLEAVE",
+        "WRITE_STATE",
+        "POLYMERIZE",
+        "LIGATE",
+        "COMMIT"
+      ],
+      "rule": "REPLACE \u2192 CLEAVE; WRITE_STATE; POLYMERIZE; LIGATE; COMMIT"
+    }
+  ],
+  "lowering_status": "LOWERED",
+  "operations": [
+    {
+      "note": "reference-derived regions",
+      "opcode": "COPY"
+    },
+    {
+      "edit": {
+        "edit_id": "edit-1",
+        "end": 8,
+        "operation": "REPLACE",
+        "orientation": "+",
+        "provenance": "DESIGN",
+        "reference_sequence": "",
+        "replacement": "TTTT",
+        "source": "",
+        "start": 4,
+        "validation": "pending"
+      },
+      "opcode": "REPLACE"
+    }
+  ],
+  "type": "GeneticRISC",
+  "unresolved": [],
+  "version": "0.6.0"
+}

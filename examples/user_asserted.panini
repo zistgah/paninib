@@ -1,0 +1,28 @@
+// User-asserted causality. Compiles through Sequence IR but is not
+// scientific validation.
+
+organism synthetic {
+    intent {
+        establish glow
+    }
+
+    assertion {
+        bind glow {
+            assembly = "demo-v1"
+            reference = chrDemo
+            operation = REPLACE
+            start = 0
+            end = 4
+            replacement = AAAA
+            constrains = glow
+        }
+    }
+
+    constraints {
+        viability
+    }
+
+    verify {
+        molecular
+    }
+}

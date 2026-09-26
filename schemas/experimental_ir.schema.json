@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://panini.local/schemas/experimental_ir.schema.json",
+  "title": "ExperimentalIR",
+  "description": "Research-resolution IR. Specifies unknowns and evidence classes, not wet-lab protocols. Schema version 0.7.0.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version","experimental_ir_id","program_id","work_orders","note"],
+  "properties": {
+    "schema_version": { "type": "string", "const": "0.7.0" },
+    "experimental_ir_id": { "type": "string", "minLength": 1 },
+    "program_id": { "type": "string" },
+    "work_orders": { "type": "array", "items": { "$ref": "https://panini.local/schemas/resolution_work_order.schema.json" } },
+    "note": { "type": "string" },
+    "integration": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "lims": { "type": "string" },
+        "eln": { "type": "string" },
+        "vendor": { "type": "string" },
+        "neutrality": { "type": "string" }
+      }
+    }
+  }
+}

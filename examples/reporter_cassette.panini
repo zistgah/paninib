@@ -1,0 +1,16 @@
+// Demonstrator: registry / standard-part resolution.
+// Synthetic organism. Not a biological claim.
+
+organism synthetic {
+    intent {
+        use_part reporter_cassette
+    }
+
+    constraints {
+        viability
+    }
+
+    verify {
+        molecular
+    }
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://panini.local/schemas/resolution_work_order.schema.json",
+  "title": "ResolutionWorkOrder",
+  "description": "Integration-neutral research-resolution contract. Not a wet-lab protocol. Schema version 0.7.0.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version","work_order_id","constraint_id","diagnostic_code","question","target_property","current_knowledge","missing_relation","candidate_hypotheses","required_evidence_class","recommended_information_source","recommended_assay_class","measurement_required","resolution_criterion","knowledge_record_to_create","dependencies","unblocks","provenance","status"],
+  "properties": {
+    "schema_version": { "type": "string", "const": "0.7.0" },
+    "work_order_id": { "type": "string", "minLength": 1 },
+    "constraint_id": { "type": "string", "minLength": 1 },
+    "diagnostic_code": { "type": "string", "enum": ["E0001","E0002","E0003","E0004","E0005","E0006","E0007","E0008","E0009","E0010","E0011"] },
+    "question": { "type": "string", "minLength": 1 },
+    "target_property": { "type": "string" },
+    "current_knowledge": { "type": "object", "additionalProperties": true },
+    "missing_relation": { "type": "string" },
+    "candidate_hypotheses": { "type": "array", "items": { "type": "string" } },
+    "required_evidence_class": { "type": "string", "enum": ["association","correlation","mechanistic","causal","experimental_validation","reference_sequence","standard_part","user_assertion_review"] },
+    "recommended_information_source": { "type": "string" },
+    "recommended_assay_class": { "type": "string" },
+    "measurement_required": { "type": "boolean" },
+    "resolution_criterion": { "type": "string" },
+    "knowledge_record_to_create": { "type": "object", "additionalProperties": true },
+    "dependencies": { "type": "array", "items": { "type": "string" } },
+    "unblocks": { "type": "array", "items": { "type": "string" } },
+    "provenance": { "type": "object", "additionalProperties": true },
+    "status": { "type": "string", "enum": ["OPEN","BLOCKED","SATISFIED","WITHDRAWN"] }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://panini.local/schemas/execution_run.schema.json",
+  "title": "ExecutionRun",
+  "type": "object",
+  "required": ["run_id", "model_id", "random_seed", "phenotype", "provenance"],
+  "properties": {
+    "run_id": {"type": "string"},
+    "model_id": {"type": "string"},
+    "model_version": {"type": "string"},
+    "random_seed": {"type": "integer"},
+    "phenotype": {"type": "object"},
+    "provenance": {"type": "object"},
+    "digest": {"type": "string"}
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "operations": [
+    {
+      "edit": {
+        "edit_id": "edit-1",
+        "end": 8,
+        "operation": "REPLACE",
+        "orientation": "+",
+        "provenance": "DESIGN",
+        "reference_sequence": "",
+        "replacement": "TTTT",
+        "source": "",
+        "start": 4,
+        "validation": "pending"
+      },
+      "implementation_status": "EXECUTABLE",
+      "lowering_status": "AVAILABLE",
+      "opcode": "REPLACE"
+    }
+  ],
+  "type": "GeneticCISC",
+  "version": "0.6.0"
+}

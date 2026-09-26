@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://panini.local/schemas/biological_resolution.schema.json",
+  "title": "BiologicalResolution",
+  "description": "Per-program biological resolution report. Schema version 0.7.0.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version","program_id","status","constraints","diagnostics","coverage"],
+  "properties": {
+    "schema_version": { "type": "string", "const": "0.7.0" },
+    "program_id": { "type": "string" },
+    "status": { "type": "string", "enum": ["COMPILED","COMPILED_WITH_WARNINGS","DESIGN_UNRESOLVED","REFERENCE_UNAVAILABLE","INVALID_PROGRAM","INSUFFICIENT_EVIDENCE","UNSUPPORTED_OPERATION"] },
+    "constraints": { "type": "array", "items": { "type": "object", "additionalProperties": true } },
+    "diagnostics": { "type": "array" },
+    "coverage": { "type": "object", "additionalProperties": true }
+  }
+}
